@@ -1,0 +1,63 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  uuid       String   @id @default(uuid())
+  email      String   @unique
+  first_name String
+  last_name  String
+  password   String
+  username   String
+  meal       Meal[]
+  agenda     Agenda[]
+  created_at DateTime @default(now())
+}
+
+model Food {
+  uuid          String   @id @default(uuid())
+  name          String
+  nutrients     Nutrient @relation(fields: [nutrient_uuid], references: [uuid])
+  nutrient_uuid String
+  picture       String
+  meal          Meal?    @relation(fields: [meal_uuid], references: [uuid])
+  meal_uuid     String?
+  created_at    DateTime @default(now())
+}
+
+model Nutrient {
+  uuid       String   @id @default(uuid())
+  calories   Float
+  fat        Float
+  protein    Float
+  carbs      Float
+  created_at DateTime @default(now())
+  food       Food[]
+}
+
+model Meal {
+  uuid        String   @id @default(uuid())
+  name        String
+  created_at  DateTime @default(now())
+  user        User     @relation(fields: [user_uuid], references: [uuid])
+  user_uuid   String
+  food        Food[]
+  agenda      Agenda   @relation(fields: [agenda_uuid], references: [uuid])
+  agenda_uuid String
+}
+
+model Agenda {
+  uuid       String   @id @default(uuid())
+  created_at DateTime @default(now())
+  user       User     @relation(fields: [user_uuid], references: [uuid])
+  user_uuid  String
+  meal       Meal[]
+}
