@@ -1,0 +1,64 @@
+{
+  "name": "calorie-tracker-api",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/calorie-tracker-api/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/apps/calorie-tracker-api",
+        "main": "apps/calorie-tracker-api/src/main.ts",
+        "tsConfig": "apps/calorie-tracker-api/tsconfig.app.json",
+        "assets": ["apps/calorie-tracker-api/src/assets"],
+        "isolatedConfig": true,
+        "webpackConfig": "apps/calorie-tracker-api/webpack.config.js"
+      },
+      "configurations": {
+        "development": {},
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "calorie-tracker-api:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "calorie-tracker-api:build:development"
+        },
+        "production": {
+          "buildTarget": "calorie-tracker-api:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/calorie-tracker-api/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/calorie-tracker-api/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    }
+  },
+  "tags": []
+}
