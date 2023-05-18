@@ -1,6 +1,7 @@
-import { Controller, Post, Request, UseGuards } from '@nestjs/common'
+import { Body, Controller, Post, Request, UseGuards } from '@nestjs/common'
 import { AuthService } from './auth.service'
 import { LocalAuthGuard } from './local-auth.guard'
+import { User } from '@prisma/client'
 
 @Controller('auth')
 export class AuthController {
@@ -13,11 +14,7 @@ export class AuthController {
   }
 
   @Post('register')
-  async register(@Request() req) {
-    try {
-      return this.authService.register(req.body)
-    } catch (e) {
-      console.log(e)
-    }
+  async register(@Body() user: User) {
+    return this.authService.register(user)
   }
 }

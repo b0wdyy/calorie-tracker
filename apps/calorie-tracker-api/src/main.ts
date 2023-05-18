@@ -1,3 +1,4 @@
+import { PrismaClientExceptionFilter } from './app/filters/prisma-client-exception.filter'
 import { Logger } from '@nestjs/common'
 import { NestFactory } from '@nestjs/core'
 
@@ -8,6 +9,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule)
   const globalPrefix = 'api'
   app.setGlobalPrefix(globalPrefix)
+  app.useGlobalFilters(new PrismaClientExceptionFilter())
   app.enableCors()
   const port = process.env.PORT || 3000
 

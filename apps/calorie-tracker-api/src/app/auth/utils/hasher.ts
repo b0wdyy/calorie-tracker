@@ -1,13 +1,11 @@
-import * as bcrypt from 'bcrypt';
+import * as bcrypt from 'bcrypt'
 
-export class HasherUtil {
-  private static readonly HASH = bcrypt.genSaltSync()
+export function hashPassword(password: string) {
+  const hash = bcrypt.genSaltSync()
 
-  static hashPassword(password: string) {
-    return bcrypt.hashSync(password, this.HASH)
-  }
+  return bcrypt.hashSync(password, hash)
+}
 
-  static comparePassword(password: string, hash: string) {
-    return bcrypt.compareSync(password, hash)
-  }
+export async function comparePassword(password: string, hash: string) {
+  return bcrypt.compareSync(password, hash)
 }

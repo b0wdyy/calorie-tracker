@@ -1,4 +1,4 @@
-import { HasherUtil } from './utils/hasher'
+import { comparePassword } from './utils/hasher'
 import { Injectable } from '@nestjs/common'
 import { UsersService } from '../services/users/users.service'
 import { User } from '@prisma/client'
@@ -17,7 +17,7 @@ export class AuthService {
   ): Promise<Omit<User, 'password'>> {
     const user = await this.usersService.findOne(email)
 
-    if (!user || !HasherUtil.comparePassword(password, user.password)) {
+    if (!user || !comparePassword(password, user.password)) {
       return null
     }
 
@@ -35,10 +35,7 @@ export class AuthService {
   }
 
   async register(user: User) {
-    try {
-      await this.usersService.createOne(user)
-    } catch (e) {
-      console.log(e)
-    }
+    const { password, ...rest } = await this.usersService.createOne(user)
+    return rest
   }
 }
