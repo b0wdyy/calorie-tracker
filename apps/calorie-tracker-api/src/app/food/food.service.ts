@@ -6,6 +6,10 @@ import { FoodDto } from '@calorie-tracker/types'
 export class FoodService {
   constructor(private prismaService: PrismaService) {}
 
+  getFoods() {
+    return this.prismaService.food.findMany()
+  }
+
   async createFood(food: FoodDto) {
     return this.prismaService.food.create({
       data: food,

@@ -8,6 +8,11 @@ import { FoodService } from './food.service'
 export class FoodController {
   constructor(private foodService: FoodService) {}
 
+  @Get()
+  async getFoods() {
+    return this.foodService.getFoods()
+  }
+
   @UseGuards(JwtAuthGuard)
   @Post()
   async createFood(@Body() food: FoodDto) {
