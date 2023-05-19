@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -17,41 +14,38 @@ model User {
   last_name  String
   password   String
   username   String   @unique
-  meal       Meal[]
   agenda     Agenda[]
   created_at DateTime @default(now())
 }
 
 model Food {
-  uuid          String   @id @default(uuid())
-  name          String
-  nutrients     Nutrient @relation(fields: [nutrient_uuid], references: [uuid])
-  nutrient_uuid String
-  picture       String
-  meal          Meal?    @relation(fields: [meal_uuid], references: [uuid])
-  meal_uuid     String?
-  created_at    DateTime @default(now())
-}
-
-model Nutrient {
-  uuid       String   @id @default(uuid())
+  uuid       String         @id @default(uuid())
+  name       String
+  picture    String
   calories   Float
   fat        Float
   protein    Float
   carbs      Float
-  created_at DateTime @default(now())
-  food       Food[]
+  meals      FoodsOnMeals[]
+  created_at DateTime       @default(now())
 }
 
 model Meal {
-  uuid        String   @id @default(uuid())
+  uuid        String         @id @default(uuid())
   name        String
-  created_at  DateTime @default(now())
-  user        User     @relation(fields: [user_uuid], references: [uuid])
-  user_uuid   String
-  food        Food[]
-  agenda      Agenda   @relation(fields: [agenda_uuid], references: [uuid])
+  created_at  DateTime       @default(now())
+  foods       FoodsOnMeals[]
+  agenda      Agenda         @relation(fields: [agenda_uuid], references: [uuid])
   agenda_uuid String
+}
+
+model FoodsOnMeals {
+  uuid       String   @id @default(uuid())
+  food       Food     @relation(fields: [food_uuid], references: [uuid])
+  food_uuid  String
+  meal       Meal     @relation(fields: [meal_uuid], references: [uuid])
+  meal_uuid  String
+  created_at DateTime @default(now())
 }
 
 model Agenda {

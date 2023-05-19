@@ -1,7 +1,8 @@
 import { Injectable } from '@nestjs/common'
-import { PrismaService } from '../prisma/prisma.service'
-import { hashPassword } from '../../auth/utils/hasher'
 import { User } from '@prisma/client'
+import { PrismaService } from '@calorie-tracker/api-shell/prisma'
+
+import { hashPassword } from '../../../../../../libs/api-shell/auth/src/utils/hasher'
 
 @Injectable()
 export class UsersService {

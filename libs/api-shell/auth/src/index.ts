@@ -1,0 +1,5 @@
+export { AuthModule } from './auth.module'
+export { AuthService } from './auth.service'
+export { LocalAuthGuard } from './guards/local-auth.guard'
+export { LocalStrategy } from './strategies/local.strategy'
+export { JwtAuthGuard } from './guards/jwt-auth.guard'

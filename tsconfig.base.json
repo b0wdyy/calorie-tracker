@@ -14,7 +14,16 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@calorie-tracker/api-shell/auth": ["libs/api-shell/auth/src/index.ts"],
+      "@calorie-tracker/api-shell/prisma": [
+        "libs/api-shell/prisma/src/index.ts"
+      ],
+      "@calorie-tracker/calorie-tracker-api/src/app/food": [
+        "apps/calorie-tracker-api/src/app/food/src/index.ts"
+      ],
+      "@calorie-tracker/types": ["libs/types/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

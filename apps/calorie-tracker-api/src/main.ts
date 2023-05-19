@@ -1,9 +1,9 @@
-import { PrismaClientExceptionFilter } from './app/filters/prisma-client-exception.filter'
 import { Logger } from '@nestjs/common'
 import { NestFactory } from '@nestjs/core'
+import { PrismaService } from '@calorie-tracker/api-shell/prisma'
 
 import { AppModule } from './app/app.module'
-import { PrismaService } from './app/services/prisma/prisma.service'
+import { PrismaClientExceptionFilter } from './app/filters/prisma-client-exception.filter'
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule)

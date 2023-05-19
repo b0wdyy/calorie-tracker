@@ -1,8 +1,10 @@
-import { comparePassword } from './utils/hasher'
 import { Injectable } from '@nestjs/common'
-import { UsersService } from '../services/users/users.service'
 import { User } from '@prisma/client'
 import { JwtService } from '@nestjs/jwt'
+
+import { UsersService } from '../../../../apps/calorie-tracker-api/src/app/services/users/users.service'
+
+import { comparePassword } from './utils/hasher'
 
 @Injectable()
 export class AuthService {
@@ -14,14 +16,14 @@ export class AuthService {
   async validateUser(
     email: string,
     password: string
-  ): Promise<Omit<User, 'password'>> {
+  ): Promise<Omit<User, 'password'> | null> {
     const user = await this.usersService.findOne(email)
 
     if (!user || !comparePassword(password, user.password)) {
       return null
     }
 
-    const { password: userPass, ...result } = user
+    const { password: _, ...result } = user
 
     return result
   }
