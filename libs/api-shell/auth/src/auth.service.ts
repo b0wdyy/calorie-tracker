@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common'
 import { User } from '@prisma/client'
-import { JwtService } from '@nestjs/jwt'
 
+import { JwtService } from '@nestjs/jwt'
 import { UsersService } from '../../../../apps/calorie-tracker-api/src/app/services/users/users.service'
 import { comparePassword } from './utils/hasher'
 

@@ -22,7 +22,9 @@
       "@calorie-tracker/calorie-tracker-api/src/app/food": [
         "apps/calorie-tracker-api/src/app/food/src/index.ts"
       ],
-      "@calorie-tracker/types": ["libs/types/src/index.ts"]
+      "@calorie-tracker/types": ["libs/types/src/index.ts"],
+      "@calorie-tracker/ui": ["libs/ui/src/index.ts"],
+      "@calorie-tracker/ui/server": ["libs/ui/src/server.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
