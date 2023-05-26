@@ -1,6 +1,6 @@
-import { Body, Controller, Get, Param, Post, UseGuards } from '@nestjs/common'
 import { JwtAuthGuard } from '@calorie-tracker/api-shell/auth'
 import { FoodDto } from '@calorie-tracker/types'
+import { Body, Controller, Get, Param, Post, UseGuards } from '@nestjs/common'
 
 import { FoodService } from './food.service'
 

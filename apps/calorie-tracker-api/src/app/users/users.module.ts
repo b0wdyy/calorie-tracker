@@ -1,5 +1,5 @@
-import { Module } from '@nestjs/common'
 import { PrismaService } from '@calorie-tracker/api-shell/prisma'
+import { Module } from '@nestjs/common'
 
 import { UsersService } from './users.service'
 

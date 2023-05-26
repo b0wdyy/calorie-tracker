@@ -1,8 +1,9 @@
 import { Injectable } from '@nestjs/common'
+import { JwtService } from '@nestjs/jwt'
 import { User } from '@prisma/client'
 
-import { JwtService } from '@nestjs/jwt'
-import { UsersService } from '../../../../apps/calorie-tracker-api/src/app/services/users/users.service'
+import { UsersService } from '../../../../apps/calorie-tracker-api/src/app/users/users.service'
+
 import { comparePassword } from './utils/hasher'
 
 @Injectable()
@@ -32,6 +33,10 @@ export class AuthService {
 
     return {
       access_token: this.jwtService.sign(payload),
+      email: user.email,
+      username: user.username,
+      first_name: user.first_name,
+      last_name: user.last_name,
     }
   }
 

@@ -1,7 +1,7 @@
+import { hashPassword } from '@calorie-tracker/api-shell/auth'
+import { PrismaService } from '@calorie-tracker/api-shell/prisma'
 import { Injectable } from '@nestjs/common'
 import { User } from '@prisma/client'
-import { PrismaService } from '@calorie-tracker/api-shell/prisma'
-import { hashPassword } from '@calorie-tracker/api-shell/auth'
 
 @Injectable()
 export class UsersService {
@@ -16,7 +16,6 @@ export class UsersService {
   }
 
   async createOne(user: User) {
-    console.log(user)
     user.password = hashPassword(user.password)
 
     return this.prismaService.user.create({

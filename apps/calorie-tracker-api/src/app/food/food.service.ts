@@ -1,6 +1,6 @@
-import { Injectable } from '@nestjs/common'
 import { PrismaService } from '@calorie-tracker/api-shell/prisma'
 import { FoodDto } from '@calorie-tracker/types'
+import { Injectable } from '@nestjs/common'
 
 @Injectable()
 export class FoodService {
