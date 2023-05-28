@@ -12,6 +12,9 @@ module.exports = {
     ...createGlobPatternsForDependencies(__dirname),
   ],
   theme: {
+    fontFamily: {
+      maven: 'Maven Pro, sans-serif',
+    },
     extend: {},
   },
   plugins: [require('@tailwindcss/forms')],

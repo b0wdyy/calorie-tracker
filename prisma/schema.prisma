@@ -14,6 +14,7 @@ model User {
   last_name  String
   password   String
   username   String   @unique
+  image      String?
   agenda     Agenda[]
   created_at DateTime @default(now())
 }
@@ -54,4 +55,16 @@ model Agenda {
   user       User     @relation(fields: [user_uuid], references: [uuid])
   user_uuid  String
   meal       Meal[]
+}
+
+model Recipe {
+  uuid             String   @id @default(uuid())
+  name             String
+  ingredients      String[]
+  steps            String[]
+  preparation_time String
+  image            String
+  fat              Int
+  carbs            Int
+  protein          Int
 }

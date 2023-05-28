@@ -12,6 +12,9 @@ const nextConfig = {
     // See: https://github.com/gregberge/svgr
     svgr: false,
   },
+  images: {
+    domains: ['placehold.co', 'www.allrecipes.com'],
+  },
 }
 
 const plugins = [

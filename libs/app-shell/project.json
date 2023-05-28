@@ -1,0 +1,27 @@
+{
+  "name": "app-shell",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/app-shell/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/app-shell",
+        "main": "libs/app-shell/src/index.ts",
+        "tsConfig": "libs/app-shell/tsconfig.lib.json",
+        "assets": ["libs/app-shell/*.md"],
+        "generatePackageJson": true
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/app-shell/**/*.ts"]
+      }
+    }
+  },
+  "tags": []
+}

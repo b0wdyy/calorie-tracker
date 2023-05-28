@@ -12,7 +12,7 @@ type Props = {
 export default function RootLayout({ children, session }: Props) {
   return (
     <html lang="en">
-      <body>
+      <body className="font-maven">
         <NextAuthProvider session={session}>{children}</NextAuthProvider>
       </body>
     </html>

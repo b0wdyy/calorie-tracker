@@ -7,7 +7,7 @@ import { FoodService } from './food.service'
 @Module({
   controllers: [FoodController],
   providers: [FoodService],
-  exports: [FoodService],
+  exports: [],
   imports: [PrismaModule],
 })
 export class FoodModule {}

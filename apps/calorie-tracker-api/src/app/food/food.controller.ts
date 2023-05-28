@@ -4,7 +4,7 @@ import { Body, Controller, Get, Param, Post, UseGuards } from '@nestjs/common'
 
 import { FoodService } from './food.service'
 
-@Controller('food')
+@Controller('foods')
 export class FoodController {
   constructor(private foodService: FoodService) {}
 
