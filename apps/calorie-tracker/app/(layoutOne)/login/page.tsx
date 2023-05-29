@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { useSearchParams } from 'next/navigation'
 import { signIn } from 'next-auth/react'
 import { FormEventHandler, useState } from 'react'
+import toast from 'react-hot-toast'
 
 import LoginHero from '../../../public/images/hero-login.jpg'
 
@@ -19,11 +20,18 @@ export default function LoginPage() {
   const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault()
 
-    await signIn('credentials', {
-      ...user,
-      redirect: true,
-      callbackUrl,
-    })
+    await toast.promise(
+      signIn('credentials', {
+        ...user,
+        redirect: true,
+        callbackUrl,
+      }),
+      {
+        loading: 'Logging in...',
+        success: 'Logged in successfully',
+        error: 'Something went wrong',
+      }
+    )
   }
 
   return (

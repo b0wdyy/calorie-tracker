@@ -7,6 +7,7 @@
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
     "@fortawesome/react-fontawesome": "^0.2.0",
+    "@hookform/resolvers": "^3.1.0",
     "@nestjs/common": "^9.1.1",
     "@nestjs/core": "^9.1.1",
     "@nestjs/jwt": "^10.0.3",
@@ -14,9 +15,9 @@
     "@nestjs/passport": "^9.0.3",
     "@nestjs/platform-express": "^9.1.1",
     "@prisma/client": "^4.14.1",
-    "aws-sdk": "^2.1386.0",
     "axios": "^1.0.0",
     "bcrypt": "^5.1.0",
+    "cloudinary": "^1.37.0",
     "framer-motion": "^10.12.12",
     "lucide-react": "^0.221.0",
     "next": "13.4.1",
@@ -26,9 +27,12 @@
     "passport-local": "^1.0.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-hook-form": "^7.44.2",
+    "react-hot-toast": "^2.4.1",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.8.0",
-    "tslib": "^2.3.0"
+    "tslib": "^2.3.0",
+    "yup": "^1.2.0"
   },
   "devDependencies": {
     "@babel/preset-react": "^7.14.5",

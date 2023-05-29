@@ -1,5 +1,5 @@
 import { authOptions } from '@calorie-tracker/app-shell'
-import { Apple, Book, FileText, Home, Settings } from 'lucide-react'
+import { Apple, Book, FileText, Home, LogIn, Settings } from 'lucide-react'
 import Image from 'next/image'
 import { getServerSession } from 'next-auth'
 
@@ -63,7 +63,11 @@ export const SideNav = async () => {
             </div>
           </div>
         </div>
-      ) : null}
+      ) : (
+        <SideNavItem icon={<LogIn />} to="/login">
+          Login
+        </SideNavItem>
+      )}
     </div>
   )
 }
